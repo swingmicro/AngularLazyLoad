@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
-
+import {IITSLoaderDirective } from './app.component';
 const APP_ROUTES: Routes = [ {
     path: 'superpowers',
     loadChildren: '../superpowers/superpowers.module#SuperpowersModule'
@@ -17,10 +17,15 @@ const APP_ROUTES: Routes = [ {
     redirectTo: 'info',
     pathMatch: 'full'
 } ];
+declare  var quickstartLib: any ;
+
+console.log(quickstartLib);
+
 
 @NgModule({
-    imports: [ BrowserModule, RouterModule.forRoot(APP_ROUTES) ],
+    imports: [ BrowserModule, RouterModule.forRoot(APP_ROUTES), quickstartLib.LibModule,IITSLoaderDirective ],
     declarations: [ AppComponent ],
-    bootstrap: [ AppComponent ]
+    bootstrap: [ AppComponent ],
+    entryComponents: [ quickstartLib.LibComponent ]
 })
 export class AppModule { }
